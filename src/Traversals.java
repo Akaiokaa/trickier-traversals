@@ -56,7 +56,21 @@ public class Traversals {
    * @return a post-order traversal string, or an empty string if the tree is null
    */
   public static <T> String buildPostOrderString(TreeNode<T> node) {
-    return null;
+    /*
+         a
+        / \
+       b   d
+      /     \
+     c       e             output: abcde
+       if(node == null) return "";
+    */
+   
+    // base case
+    if(node == null) return "";
+    // String letterLeft = buildPostOrderString(node.left);
+    // String letterRight = buildPostOrderString(node.right);
+
+    return buildPostOrderString(node.left) + buildPostOrderString(node.right) + node.value;
   }
 
   /**
