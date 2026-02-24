@@ -82,7 +82,23 @@ public class Traversals {
    * @return a list of node values in a top-to-bottom order, or an empty list if the tree is null
    */
   public static <T> List<T> collectLevelOrderValues(TreeNode<T> node) {
-    return null;
+     /*
+         *        "Alpha"
+         *         /    \
+         *   "Beta7"     "Gamma1"
+         *    /  \
+         * "D#4"  "E9"
+         *
+         * Level order: Alpha, Beta7, Gamma1, D#4, E9 actual [Alpha, Beta7, D#4, E9, Gamma1]
+         */
+    if (node == null) { return List.of(); }
+    List<T> allLevelOrders = new ArrayList<>();
+
+    
+    allLevelOrders.addAll(collectLevelOrderValues(node.left));
+    allLevelOrders.add(node.value);
+    allLevelOrders.addAll(collectLevelOrderValues(node.right));
+    return allLevelOrders;
   }
 
   /**
